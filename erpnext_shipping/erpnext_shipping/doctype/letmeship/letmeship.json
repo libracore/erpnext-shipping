@@ -1,5 +1,4 @@
 {
- "actions": [],
  "creation": "2020-07-23 10:55:19.669830",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -8,7 +7,9 @@
   "enabled",
   "api_id",
   "api_password",
-  "information"
+  "information",
+  "col_main",
+  "lms_region"
  ],
  "fields": [
   {
@@ -20,24 +21,32 @@
   {
    "fieldname": "api_id",
    "fieldtype": "Data",
-   "label": "API ID",
-   "read_only_depends_on": "eval:doc.enabled == 0"
+   "label": "API ID"
   },
   {
    "fieldname": "api_password",
    "fieldtype": "Password",
-   "label": "API Password",
-   "read_only_depends_on": "eval:doc.enabled == 0"
+   "label": "API Password"
   },
   {
    "fieldname": "information",
    "fieldtype": "HTML",
    "options": "<div><span class=\"text-medium text-muted\">For steps to generate the API ID, click <a href=\"https://www.letmeship.com/en-at/connect-the-shipping-interface/\" target=\"_blank\">here</a></span></div>"
+  },
+  {
+   "fieldname": "col_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "CH",
+   "fieldname": "lms_region",
+   "fieldtype": "Select",
+   "label": "LMS-Region",
+   "options": "CH\nAT\nDE"
   }
  ],
  "issingle": 1,
- "links": [],
- "modified": "2020-12-16 15:36:48.424827",
+ "modified": "2022-08-27 08:26:57.232486",
  "modified_by": "Administrator",
  "module": "ERPNext Shipping",
  "name": "LetMeShip",

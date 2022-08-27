@@ -19,7 +19,7 @@ class LetMeShip(Document): pass
 class LetMeShipUtils():
     def __init__(self):
         self.api_password = get_decrypted_password('LetMeShip', 'LetMeShip', 'api_password', raise_exception=False)
-        self.api_id, self.enabled = frappe.db.get_value('LetMeShip', 'LetMeShip', ['api_id', 'enabled'])
+        self.api_id, self.enabled, self.lms_region = frappe.db.get_value('LetMeShip', 'LetMeShip', ['api_id', 'enabled', 'lms_region'])
 
         if not self.enabled:
             link = frappe.utils.get_link_to_form('LetMeShip', 'LetMeShip', frappe.bold('LetMeShip Settings'))
@@ -41,7 +41,8 @@ class LetMeShipUtils():
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Access-Control-Allow-Origin': 'string'
+            'Access-Control-Allow-Origin': 'string',
+            'Lms-Region': self.lms_region
         }
         payload = self.generate_payload(
             pickup_address=pickup_address,
@@ -94,7 +95,8 @@ class LetMeShipUtils():
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Access-Control-Allow-Origin': 'string'
+            'Access-Control-Allow-Origin': 'string',
+            'Lms-Region': self.lms_region
         }
         payload = self.generate_payload(
             pickup_address=pickup_address,
@@ -144,7 +146,8 @@ class LetMeShipUtils():
             headers = {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Access-Control-Allow-Origin': 'string'
+                'Access-Control-Allow-Origin': 'string',
+                'Lms-Region': self.lms_region
             }
             url = 'https://api.letmeship.com/v1/shipments/{id}/documents?types=LABEL'.format(id=shipment_id)
             shipment_label_response = requests.get(
@@ -169,7 +172,8 @@ class LetMeShipUtils():
         headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Access-Control-Allow-Origin': 'string'
+            'Access-Control-Allow-Origin': 'string',
+            'Lms-Region': self.lms_region
         }
         try:
             url = 'https://api.letmeship.com/v1/tracking?shipmentid={id}'.format(id=shipment_id)
