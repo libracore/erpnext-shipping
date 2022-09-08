@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2020, Frappe Technologies and contributors
+# Copyright (c) 2020-2022, libracore, Frappe Technologies and contributors
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
@@ -322,7 +322,7 @@ class LetMeShipUtils():
                 'addressInfo1': address.address_line2,
                 'houseNo': '',
             },
-            'company': address.address_title,
+            'company': address.company,
             'person': {
                 'title': contact.title,
                 'firstname': contact.first_name,
